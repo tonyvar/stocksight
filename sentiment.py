@@ -242,6 +242,9 @@ class TweetStreamListener(StreamListener):
             # randomly sleep to stagger request time
             time.sleep(randrange(2,5))
             return True
+            
+        except UnicodeEncodeError:
+            logger.warning("Unicode characters present")
 
         except Exception as e:
             logger.warning("Exception: exception caused by: %s" % e)
